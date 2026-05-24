@@ -1,0 +1,317 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #111;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", Arial, sans-serif;
+}
+
+.app {
+  min-height: 100vh;
+  padding: 22px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.screen {
+  min-height: calc(100vh - 44px);
+}
+
+.centerScreen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 22px;
+  text-align: center;
+}
+
+.logoTitle {
+  font-size: 64px;
+  font-weight: 900;
+  margin: 0 0 20px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 36px;
+}
+
+h2 {
+  margin: 0;
+}
+
+.subtitle {
+  color: #aaa;
+}
+
+button {
+  border: none;
+  border-radius: 15px;
+  padding: 14px 18px;
+  font-size: 16px;
+  font-weight: 700;
+  background: #2c2c2e;
+  color: white;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+.mainButton {
+  width: min(340px, 100%);
+  font-size: 20px;
+  padding: 18px;
+}
+
+.orange {
+  background: #ff9500;
+}
+
+.blue {
+  background: #007aff;
+}
+
+.green {
+  background: #34c759;
+}
+
+.red {
+  background: #ff3b30;
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 16px;
+  margin-bottom: 12px;
+  border-radius: 14px;
+  border: 1px solid #333;
+  background: #1c1c1e;
+  color: white;
+  font-size: 17px;
+}
+
+.bottomActions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.bottomActions button {
+  flex: 1;
+  min-width: 150px;
+}
+
+.card,
+.rankingBox,
+.resultRow {
+  background: rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 16px;
+  margin-bottom: 14px;
+}
+
+.playerHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: center;
+}
+
+.playerActions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.total {
+  color: #aaa;
+  margin: 5px 0;
+}
+
+.roundStatus {
+  color: #ffcc00;
+  margin: 5px 0;
+}
+
+.rounds {
+  display: flex;
+  overflow-x: auto;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.round {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.14);
+  white-space: nowrap;
+  font-weight: 700;
+}
+
+.freeze {
+  background: rgba(0,122,255,0.35);
+}
+
+.dead {
+  background: rgba(255,59,48,0.35);
+}
+
+.rankingRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+.rankingRow:last-child {
+  border-bottom: none;
+}
+
+.gold {
+  color: gold;
+  font-weight: 900;
+}
+
+.silver {
+  color: silver;
+  font-weight: 900;
+}
+
+.bronze {
+  color: #cd7f32;
+  font-weight: 900;
+}
+
+.remaining {
+  color: #ffcc00;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.78);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 12px;
+}
+
+.modalContent {
+  width: 100%;
+  max-width: 680px;
+  max-height: 92vh;
+  overflow-y: auto;
+  background: #1c1c1e;
+  border-radius: 24px;
+  padding: 18px;
+}
+
+#pointsPreview {
+  font-size: 64px;
+  font-weight: 900;
+  text-align: center;
+  margin: 10px 0;
+}
+
+#normalCounter {
+  text-align: center;
+  color: #aaa;
+}
+
+.bonus {
+  color: #34c759;
+  text-align: center;
+  font-weight: 800;
+}
+
+#scoreButtonsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.scoreButton {
+  min-height: 54px;
+  background: #2c2c2e;
+}
+
+.scoreButton.selected {
+  background: #ff9500;
+}
+
+.scoreButton.freezeSelected {
+  background: #007aff;
+}
+
+.scoreButton:disabled {
+  opacity: 0.25;
+}
+
+.resultRow {
+  width: min(560px, 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  font-size: 22px;
+}
+
+.medal {
+  font-size: 34px;
+  width: 44px;
+}
+
+@media (max-width: 600px) {
+  .app {
+    padding: 16px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  .logoTitle {
+    font-size: 54px;
+  }
+
+  .topBar {
+    align-items: flex-start;
+  }
+
+  .playerHeader {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .playerActions {
+    justify-content: stretch;
+  }
+
+  .playerActions button {
+    flex: 1;
+  }
+
+  #scoreButtonsGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Eclipse</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+
+  <meta name="theme-color" content="#111111" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Eclipse" />
+</head>
+
+<body>
+  <main class="app">
+
+    <section id="homeScreen" class="screen centerScreen">
+      <h1 class="logoTitle">Eclipse</h1>
+
+      <button class="mainButton orange" onclick="showNewGame()">Nueva partida</button>
+      <button class="mainButton blue" onclick="showPreviousGames()">Ver partidas anteriores</button>
+    </section>
+
+    <section id="newGameScreen" class="screen hidden">
+      <header class="topBar">
+        <h1>Agregar jugadores</h1>
+      </header>
+
+      <p class="subtitle">Puedes agregar de 1 a 20 jugadores.</p>
+
+      <div id="playersContainer"></div>
+
+      <div class="bottomActions">
+        <button onclick="addPlayerField()">Agregar jugador</button>
+        <button onclick="goHome()">Regresar</button>
+        <button class="orange" onclick="startGame()">Iniciar partida</button>
+      </div>
+    </section>
+
+    <section id="activeGameScreen" class="screen hidden">
+      <header class="topBar">
+        <h1>Partida en curso</h1>
+        <button class="green" onclick="saveRound()">Guardar ronda</button>
+      </header>
+
+      <div id="ranking"></div>
+      <div id="playersBoard"></div>
+    </section>
+
+    <section id="finalResultsScreen" class="screen centerScreen hidden">
+      <h1>Resultados finales</h1>
+      <div id="finalResults"></div>
+      <button class="mainButton orange" onclick="finishGame()">Terminar</button>
+    </section>
+
+    <section id="previousGamesScreen" class="screen hidden">
+      <header class="topBar">
+        <h1>Partidas anteriores</h1>
+        <button onclick="goHome()">Regresar</button>
+      </header>
+
+      <div id="previousGamesList"></div>
+    </section>
+
+    <section id="scoreModal" class="modal hidden">
+      <div class="modalContent">
+        <div class="topBar">
+          <h2 id="scorePlayerName"></h2>
+          <button onclick="closeScoreModal()">Cerrar</button>
+        </div>
+
+        <div id="pointsPreview">0</div>
+
+        <p id="normalCounter">Números normales: 0 / 7</p>
+        <p id="bonusText" class="bonus hidden">Bonus de 15 puntos aplicado</p>
+
+        <div id="scoreButtonsGrid"></div>
+
+        <button class="mainButton blue" onclick="savePlayerScore()">Guardar puntuación</button>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
