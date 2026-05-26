@@ -1,4 +1,4 @@
-let completedGames = JSON.parse(localStorage.getItem("eclipseCompletedGames")) || [];
+let completedGames = JSON.parse(localStorage.getItem("eclipsoCompletedGames")) || [];
 
 let currentGame = null;
 let roundDraft = {};
@@ -18,7 +18,7 @@ const scoreButtons = [
 ];
 
 function saveCompletedGames() {
-  localStorage.setItem("eclipseCompletedGames", JSON.stringify(completedGames));
+  localStorage.setItem("eclipsoCompletedGames", JSON.stringify(completedGames));
 }
 
 function hideAllScreens() {
@@ -319,23 +319,48 @@ function updateScorePreview() {
 }
 
 function calculatePoints() {
+
   const normalNumbers = selectedButtons
     .filter(isNormalNumber)
     .map(Number);
 
-  let total = normalNumbers.reduce((sum, n) => sum + n, 0);
+  // SUMA BASE DE NUMEROS NORMALES
+
+  let baseTotal = normalNumbers.reduce((sum, n) => sum + n, 0);
+
+  // BONUS INDEPENDIENTE
+
+  let bonus = 0;
 
   if (normalNumbers.length === 7) {
-    total += 15;
+    bonus = 15;
   }
 
-  selectedButtons.forEach(value => {
-    if (value === "x0") total *= 0;
-    if (value === "x2") total *= 2;
-    if (value === "/2") total = Math.floor(total / 2);
-  });
+  // SOLO LA BASE RECIBE x0 x2 /2
 
   selectedButtons.forEach(value => {
+
+    if (value === "x0") {
+      baseTotal *= 0;
+    }
+
+    if (value === "x2") {
+      baseTotal *= 2;
+    }
+
+    if (value === "/2") {
+      baseTotal = Math.floor(baseTotal / 2);
+    }
+  });
+
+  // TOTAL = BASE MODIFICADA + BONUS
+
+  let total = baseTotal + bonus;
+
+  // AL FINAL + Y -
+
+  selectedButtons.forEach(value => {
+
     if (value.startsWith("+")) {
       total += Number(value.replace("+", ""));
     }
